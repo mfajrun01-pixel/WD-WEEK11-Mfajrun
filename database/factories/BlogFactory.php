@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Blog;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
  * @extends Factory<Blog>
@@ -19,7 +20,7 @@ class BlogFactory extends Factory
     {
         static $number = 1;
         return [
-            'profile_id' => fake()->numberBetween(1, 10),
+            'user_id' => User::factory(),
             'number' => $number++,
             'category' => fake()->randomElement(['Web Development', 'Mobile App', 'UI/UX Design']),
             'title' => fake()->sentence(),

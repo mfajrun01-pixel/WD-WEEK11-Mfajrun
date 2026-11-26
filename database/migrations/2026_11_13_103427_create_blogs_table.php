@@ -13,7 +13,10 @@ public function up(): void
 {
     Schema::create('blogs', function (Blueprint $table) {
         $table->id();
-        $table->unsignedBigInteger('profile_id')->nullable();
+        $table->foreignId('user_id')->constrained(
+            table: 'users',
+            indexName: 'blogs_users_id',
+        );
         $table->integer('number')->unique();
         $table->string('category');
         $table->string('title');
